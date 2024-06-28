@@ -28,6 +28,8 @@ const FormSchema = z.object({
 export default function CreateForm() {
 	const [isPending, startTransition] = useTransition();
 
+
+
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
@@ -36,6 +38,7 @@ export default function CreateForm() {
 	});
 
 	function onSubmit(data: z.infer<typeof FormSchema>) {
+		
 		toast({
 			title: "You are successfully create todo.",
 			description: (
@@ -73,7 +76,7 @@ export default function CreateForm() {
 
 				<Button type="submit" className="w-full flex gap-2">
 					Create
-					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
+					<AiOutlineLoading3Quarters className={cn("animate-spin", {hidden: isPending})} />
 				</Button>
 			</form>
 		</Form>

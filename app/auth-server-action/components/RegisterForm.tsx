@@ -17,14 +17,16 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { signUpWithEmailAndPassword } from "../actions";
+import { useTransition } from "react";
 
 const FormSchema = z
 	.object({
 		email: z.string().email(),
-		password: z.string().min(6, {
+		password: z.string().min(3, {
 			message: "Password is required.",
 		}),
-		confirm: z.string().min(6, {
+		confirm: z.string().min(3, {
 			message: "Password is required.",
 		}),
 	})
@@ -33,6 +35,8 @@ const FormSchema = z
 		path: ["confirm"],
 	});
 export default function RegisterForm() {
+	const [isPending, startTransition] = useTransition()
+
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
@@ -42,17 +46,41 @@ export default function RegisterForm() {
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+ function onSubmit(data: z.infer<typeof FormSchema>) {
+
+		startTransition(async() => {
+			const result = await signUpWithEmailAndPassword(data)
+			const { error } = JSON.parse(result)
+
+		if(error?.message){
+
 		toast({
+			variant: "destructive",
 			title: "You submitted the following values:",
 			description: (
 				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 					<code className="text-white">
-						{JSON.stringify(data, null, 2)}
+						{error.message}
 					</code>
 				</pre>
 			),
 		});
+		}else{
+			toast({
+				title: "You submitted the following values:",
+				description: (
+					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+						<code className="text-white">
+							Registro Exitoso
+						</code>
+					</pre>
+				),
+			});
+		}
+
+		})
+
+		
 	}
 
 	return (
@@ -84,10 +112,10 @@ export default function RegisterForm() {
 					name="password"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Password</FormLabel>
+							<FormLabel>Contraseña</FormLabel>
 							<FormControl>
 								<Input
-									placeholder="password"
+									placeholder="***********"
 									{...field}
 									type="password"
 									onChange={field.onChange}
@@ -103,10 +131,10 @@ export default function RegisterForm() {
 					name="confirm"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Confirm Password</FormLabel>
+							<FormLabel>Confirma la contraseña</FormLabel>
 							<FormControl>
 								<Input
-									placeholder="Confirm Password"
+									placeholder="***********"
 									{...field}
 									type="password"
 									onChange={field.onChange}
@@ -118,8 +146,8 @@ export default function RegisterForm() {
 					)}
 				/>
 				<Button type="submit" className="w-full flex gap-2">
-					Register
-					<AiOutlineLoading3Quarters className={cn("animate-spin")} />
+					Registrarse
+					<AiOutlineLoading3Quarters className={cn("animate-spin", {hidden: !isPending})} />
 				</Button>
 			</form>
 		</Form>

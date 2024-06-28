@@ -2,8 +2,12 @@ import React from "react";
 import CreateForm from "./components/CreateForm";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import readUserSession from "@/lib/actions";
+import { redirect } from "next/navigation";
+import SignOut from "./components/SignOut";
 
-export default function Page() {
+export default async function Page() {
+	
 	const todos = [
 		{
 			title: "Subscribe",
@@ -13,9 +17,17 @@ export default function Page() {
 		},
 	];
 
+	const {data} = await readUserSession()
+
+	if(!data.session){
+		return redirect('/auth-server-action')
+	}
+
+
 	return (
 		<div className="flex justify-center items-center h-screen">
 			<div className="w-96 space-y-5">
+				<SignOut/>
 				<CreateForm />
 
 				{todos?.map((todo, index) => {
