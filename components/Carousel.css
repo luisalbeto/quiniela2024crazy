@@ -1,0 +1,45 @@
+
+.carousel-container {
+    position: relative; /* For absolute positioning of elements */
+    width: 500px; /* Adjust width as needed */
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden; /* Hide overflowing content */
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform ease-in-out 0.5s; /* Smooth transition for slides */
+  }
+  
+  .carousel-item {
+    flex: 0 0 100%; /* Make each item occupy full width */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-item.active {
+    /* Styles for the active slide */
+  }
+  
+  .carousel-image {
+    width: 100%; /* Make image fill the container */
+    height: 100%; /* Make image fill the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    position: absolute; /* Position buttons outside the carousel */
+    top: 50%; /* Center buttons vertically */
+    transform: translateY(-50%); /* Move buttons back to center */
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .carousel-prev:hover,
+  .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);}

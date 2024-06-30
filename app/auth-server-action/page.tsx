@@ -13,7 +13,7 @@ export default async function page() {
 
 
 	return (
-		<div className="flex justify-center items-center h-screen">
+		<div className="flex justify-center items-center h-screen bg-gradient-to-b from-sky to-blue overflow-hidden">
 			<div className="w-96">
 				<AuthForm />
 			</div>
