@@ -10,8 +10,11 @@ export default async function Page() {
 		return redirect('/auth-server-action')
 	}*/
 
-	const matches = [{
-		id: 1, team1: 'Argentina', team2: 'Brasil', flag1: '/flags/argentina.png', flag2: '/flags/brasil.png'
+	const matches:Array<Match> = [{
+		id: 1, team1: 'Argentina', team2: 'Brasil', flag1: '/flags/argentina.png', flag2: '/flags/brasil.png',
+        date:'2024-07-02',
+        score1:3,
+        score2:3
 	  }]
 	return (
 		<div className="flex justify-center items-center h-screen bg-gradient-to-b from-sky to-blue overflow-hidden">
@@ -20,24 +23,18 @@ export default async function Page() {
           </div>
 
             <div className="container mx-auto px-4">
-            {matches.map((match) => (
-            <Match
-            key={match.id}
-            team1={match.team1}
-            team2={match.team2}
-            flag1={match.flag1}
-            flag2={match.flag2}
-            /> ))}
+            {matches.map((match,index) => (
+                <Match
+                    key={index}
+                    match={match}
+                />))}
             </div>
             
             <div className="container mx-auto px-4">
-            {matches.map((match) => (
+            {matches.map((match,index) => (
             <Match
-            key={match.id}
-            team1={match.team1}
-            team2={match.team2}
-            flag1={match.flag1}
-            flag2={match.flag2}
+                key={index}
+                match={match}
             />  ))}
             </div>
            
@@ -47,25 +44,19 @@ export default async function Page() {
           </div>
 
           <div className="container mx-auto px-4">
-            {matches.map((match) => (
-            <Match
-            key={match.id}
-            team1={match.team1}
-            team2={match.team2}
-            flag1={match.flag1}
-            flag2={match.flag2}
-            /> ))}
+            {matches.map((match,index) => (
+                <Match
+                    key={index}
+                    match={match}
+                /> ))}
             </div>
             
             <div className="container mx-auto px-4">
-            {matches.map((match) => (
-            <Match
-            key={match.id}
-            team1={match.team1}
-            team2={match.team2}
-            flag1={match.flag1}
-            flag2={match.flag2}
-            />  ))}
+            {matches.map((match,index) => (
+                <Match
+                    key={index}
+                    match={match}
+                />  ))}
             </div>    
 		</div>
 	);

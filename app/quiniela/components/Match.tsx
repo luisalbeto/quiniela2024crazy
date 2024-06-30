@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {Match} from "@/app/types/contanst.type";
 
 
 
-const Match = ({ match }) => {
+
+export interface MatchProps{
+  match:Match
+}
+const Match :FC<MatchProps>= ({ match }) => {
   return (
     <div className="match-container" key={match.id}>
       <div className="match-info">
