@@ -10,15 +10,15 @@ export const Nav = () => {
             <div className="flex-none">
               <Logo />
             </div>
-            <div className="flex flex-row gap-8  w-full justify-center text-2xl hover:text-turquesa transition-colors text-violet font-newJune font-extrabold ">
+            <div className="flex flex-row gap-8  w-full justify-center text-2xl hover:text-turquesa transition-colors text-purple font-extrabold ">
               Quiniela Copa America 2024 Crazy Imagine
             </div>
-            <div className="flex flex-row gap-4 w-full justify-end">
+            <div className="flex flex-row gap-4 w-full justify-center">
 
-					<Link className="font-bold text-2xl hover:text-turquesa transition-colors" href="/auth-server-action">Inicia Sesion</Link>
-					<Link className="font-bold text-2xl hover:text-turquesa transition-colors" href="/">Home</Link>
-					<Link className="font-bold text-2xl hover:text-turquesa transition-colors" href="/quiniela">Quiniela</Link>
-                    <Link className="font-bold text-2xl hover:text-turquesa transition-colors" href="/ranking">Ranking</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/auth-server-action">Inicia Sesion</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/">Home</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/quiniela">Quiniela</Link>
+          <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/ranking">Ranking</Link>
 
             </div>
           </div>

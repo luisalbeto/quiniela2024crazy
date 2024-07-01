@@ -9,23 +9,23 @@ export interface MatchProps{
 }
 const Match :FC<MatchProps>= ({ match }) => {
   return (
-    <div className="match-container" key={match.id}>
-      <div className="match-info">
-        <div className="team-info">
-          <img src={match.flag1} alt={match.team1} className="team-flag" />
-          <span className="team-name">{match.team1}</span>
+    <div className="match-container bg-gray-100 shadow-md rounded-lg p-4 flex flex-col items-center gap-4" key={match.id}>
+      <div className="match-info flex flex-row justify-between">
+        <div className="team-info flex items-center">
+          <img src={match.flag1} alt={match.team1} className="team-flag w-10 h-10 rounded-full mr-8" />
+          <span className="team-name text-gray-800 font-bold">{match.team1}</span>
         </div>
-        <div className="match-score">
+        <div className="match-score text-gray-800 font-bold text-2xl">
           <span>{match.score1}</span>
           <span>-</span>
           <span>{match.score2}</span>
         </div>
-        <div className="team-info">
-          <img src={match.flag2} alt={match.team2} className="team-flag" />
-          <span className="team-name">{match.team2}</span>
+        <div className="team-info flex items-center">
+          <img src={match.flag2} alt={match.team2} className="team-flag w-10 h-10 rounded-full ml-6" />
+          <span className="team-name text-gray-800 font-bold">{match.team2}</span>
         </div>
       </div>
-      <div className="match-date">
+      <div className="match-date text-gray-600 text-center">
         <span>{match.date}</span>
       </div>
     </div>

@@ -5,9 +5,9 @@ import './Carousel.css'
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const images = [
-    { src: '../carousel/carousel1.jpg', alt: 'Image of Match 1' },
-    { src: '../carousel/carousel2.jpg', alt: 'Image of Match 2' },
-    { src: '../carousel/carousel1.jpg', alt: 'Image of Match 3' },
+    { src: '../carousel/carousel132.svg', alt: 'Image of Match 1' },
+    { src: '../carousel/carousel2342.svg', alt: 'Image of Match 2' },
+    { src: '../carousel/carousel34234.svg', alt: 'Image of Match 3' },
     // Add more image objects here
   ];
 

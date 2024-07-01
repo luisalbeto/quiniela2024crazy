@@ -45,12 +45,12 @@ export const useGetMatchesList = ()=>{
                 res.matches.map((match: MatchApi)=>{
                     matchesMap.push({
                         id: match.matchId,
-                        team1: match.teamData.away.team,
-                        team2: match.teamData.home.team,
-                        flag1:nameCountry(match.teamData.away.team),
-                        flag2:  nameCountry(match.teamData.home.team),
-                        score1 : match.teamData.away.Score,
-                        score2: match.teamData.home.Score,
+                        team1: match.teamData.home.team,
+                        team2: match.teamData.away.team,
+                        flag1:nameCountry(match.teamData.home.team),
+                        flag2:  nameCountry(match.teamData.away.team),
+                        score1 : match.teamData.home.Score,
+                        score2: match.teamData.away.Score,
                         date: match.date,
 
 

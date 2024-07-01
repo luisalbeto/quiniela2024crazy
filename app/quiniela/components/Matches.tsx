@@ -12,12 +12,17 @@ export const Matches = ()=>{
         </div>
     }
     return (
-        <div className="flex justify-center items-center h-screen bg-gradient-to-b from-sky to-blue overflow-hidden">
-            <div className="flex flex-col items-center justify-center h-full">
-                <h1 className="text-4xl font-bold mb-4">QUINIELA COPA AMERICA 2024</h1>
-            </div>
 
-            <div className="container mx-auto px-4">
+<main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-blue overflow-hidden">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+      <div className="container mx-auto px-4 py-16">
+      {/* Hero Section with Title */}
+      <section className="flex flex-col items-center text-center">
+        <h1 className="text-6xl font-bold text-gray-900">Resultados</h1>
+        <p className="mt-4 text-2xl text-gray-800">Fase de Grupos</p>
+  
+
+      <div className="container mx-auto px-4">
                 {matches.map((match,index) => (
                     <Match
                         key={index}
@@ -25,34 +30,14 @@ export const Matches = ()=>{
                     />))}
             </div>
 
-            <div className="container mx-auto px-4">
-                {matches.map((match,index) => (
-                    <Match
-                        key={index}
-                        match={match}
-                    />  ))}
-            </div>
-
-
-            <div className="flex flex-col items-center justify-center h-full">
-                <h1 className="text-4xl font-bold mb-4">Cuartos de Final</h1>
-            </div>
-
-            <div className="container mx-auto px-4">
-                {matches.map((match,index) => (
-                    <Match
-                        key={index}
-                        match={match}
-                    /> ))}
-            </div>
-
-            <div className="container mx-auto px-4">
-                {matches.map((match,index) => (
-                    <Match
-                        key={index}
-                        match={match}
-                    />  ))}
-            </div>
-        </div>
+        
+      </section>
+   
+    
+    </div>
+      </div>
+    </main>
+       
     );
 }
+
