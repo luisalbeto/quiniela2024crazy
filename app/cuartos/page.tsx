@@ -1,8 +1,7 @@
 
 
-import Match from './components/Match'
-import {Loading} from "@/app/groups/components/Loading";
-import {Matches} from "@/app/cuartos/components/Matches";
+import Match from '@/app/components/Match'
+import {Matches} from "@/app/components/Matches";
 
 export default async function Page() {
 

@@ -1,12 +1,17 @@
 'use client'
 import {useGetMatchesList} from "@/app/hooks/useGetMatchesList";
-import {Loading} from "@/app/groups/components/Loading";
-import Match from "@/app/groups/components/Match";
+import {Loading} from "@/app/components/Loading";
+import Match from "@/app/components/Match";
+import {FC, useMemo} from "react";
 
-export const Matches = ()=>{
-    const {matches}= useGetMatchesList()
-    console.log(matches)
-    if(matches === null){
+
+export interface MatchesProps{
+    matchDay? : number
+}
+export const Matches:FC<MatchesProps> = ({matchDay})=>{
+    const { filterByMatchDay, matches}= useGetMatchesList()
+    const data= useMemo(()=>matchDay ? filterByMatchDay(matchDay):matches ?? [],[filterByMatchDay, matchDay])
+    if ( data.length < 1){
         return <div>
             <Loading/>
         </div>
@@ -18,12 +23,12 @@ export const Matches = ()=>{
       <div className="container mx-auto px-4 py-16">
       {/* Hero Section with Title */}
       <section className="flex flex-col items-center text-center">
-        <h1 className="text-6xl font-bold text-gray-900">Resultados</h1>
-        <p className="mt-4 text-2xl text-gray-800">Fase de Grupos</p>
+        <h1 className="text-6xl font-bold text-gray-900">Fase Final</h1>
+        <p className="mt-4 text-2xl text-gray-800">Llena los resultados y predice al Ganador de la Copa America</p>
   
 
       <div className="container mx-auto px-4">
-                {matches.map((match,index) => (
+                {data.map((match,index) => (
                     <Match
                         key={index}
                         match={match}

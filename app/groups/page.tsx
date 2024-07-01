@@ -2,8 +2,8 @@
 
 import Match from './components/Match'
 import {useGetMatchesList} from "@/app/hooks/useGetMatchesList";
-import {Loading} from "@/app/groups/components/Loading";
-import {Matches} from "@/app/groups/components/Matches";
+import {Matches} from "@/app/components/Matches";
+
 
 export default async function Page() {
 
