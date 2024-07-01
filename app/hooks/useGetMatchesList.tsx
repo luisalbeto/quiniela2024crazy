@@ -35,6 +35,9 @@ export const useGetMatchesList = ()=>{
         const countryImage = findCountrySpecial ? findCountrySpecial.nameImage : country.toLowerCase()
         return `https://copaamerica.com/_next/image?url=%2Fflags%2F${countryImage}.png&w=32&q=75`
     },[flagsMatch])
+    const filterByMatchDay = useCallback((matchDay:number)=>{
+        return matches !==null ? matches.filter((match)=> match.matchDay == matchDay):[]
+    },[matches])
 
     useEffect(()=>{
         fetch('https://backend.copaamerica.com/api/opta/match-list')
@@ -52,6 +55,7 @@ export const useGetMatchesList = ()=>{
                         score1 : match.teamData.home.Score,
                         score2: match.teamData.away.Score,
                         date: match.date,
+                        matchDay: match.matchDay ?? ''
 
 
                     })
@@ -60,6 +64,7 @@ export const useGetMatchesList = ()=>{
             })
     },[nameCountry])
     return {
-        matches
+        matches,
+        filterByMatchDay
     }
 }

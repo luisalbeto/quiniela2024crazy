@@ -1,5 +1,5 @@
 'use client'
-import {useGetMatchesList} from "@/app/groups/hooks/useGetMatchesList";
+import {useGetMatchesList} from "@/app/hooks/useGetMatchesList";
 import {Loading} from "@/app/groups/components/Loading";
 import Match from "@/app/groups/components/Match";
 

@@ -1,7 +1,6 @@
 
 
 import Match from './components/Match'
-import {useGetMatchesList} from "./hooks/useGetMatchesList";
 import {Loading} from "@/app/groups/components/Loading";
 import {Matches} from "@/app/cuartos/components/Matches";
 
@@ -15,7 +14,7 @@ export default async function Page() {
 	}*/
     return (
         <div>
-            <Matches/>
+            <Matches matchDay={4}/>
         </div>
     )
 

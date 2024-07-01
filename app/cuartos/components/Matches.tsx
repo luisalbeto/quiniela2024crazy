@@ -1,12 +1,17 @@
 'use client'
-import {useGetMatchesList} from "@/app/groups/hooks/useGetMatchesList";
+import {useGetMatchesList} from "@/app/hooks/useGetMatchesList";
 import {Loading} from "@/app/cuartos/components/Loading";
 import Match from "@/app/cuartos/components/Match";
+import {FC, useMemo} from "react";
 
-export const Matches = ()=>{
-    const {matches}= useGetMatchesList()
-    console.log(matches)
-    if(matches === null){
+
+export interface MatchesProps{
+    matchDay? : number
+}
+export const Matches:FC<MatchesProps> = ({matchDay})=>{
+    const { filterByMatchDay}= useGetMatchesList()
+    const data= useMemo(()=>matchDay ? filterByMatchDay(matchDay):[],[filterByMatchDay, matchDay])
+    if(data.length < 1){
         return <div>
             <Loading/>
         </div>
@@ -23,7 +28,7 @@ export const Matches = ()=>{
   
 
       <div className="container mx-auto px-4">
-                {matches.map((match,index) => (
+                {data.map((match,index) => (
                     <Match
                         key={index}
                         match={match}

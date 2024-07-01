@@ -8,7 +8,8 @@ export interface Match{
     flag2:string,
     score1?:string | number,
     score2?: string | number,
-    date: string
+    date: string,
+    matchDay : string | number
 }
 
 
