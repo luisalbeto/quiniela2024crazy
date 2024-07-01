@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UserRanking = ({ users }) => {
+const UserRanking = ({ users }: {users:any}) => {
   return (
     <div className="ranking-container">
       <h2>User Ranking</h2>
       <ul className="ranking-list">
-        {users.map((user, index) => (
+        {users.map((user:any, index: number) => (
           <li key={user.id} className="ranking-item">
             <span className="position">{index + 1}</span>
             <span className="user-name">{user.name}</span>

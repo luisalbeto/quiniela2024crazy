@@ -19,13 +19,16 @@
     "@supabase/supabase-js": "^2.38.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "formik": "^2.4.6",
     "next": "14.0.1",
+    "raw-body": "^2.5.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.11.0",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.4.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
