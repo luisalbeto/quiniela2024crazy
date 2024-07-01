@@ -17,7 +17,7 @@ export const Nav = () => {
 
 					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/auth-server-action">Login</Link>
 					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/">Home</Link>
-					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/groups">Fase de Grupos</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/groups">Resultados</Link>
           <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/cuartos">Fase Final</Link>
           <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/ranking">Ranking</Link>
 

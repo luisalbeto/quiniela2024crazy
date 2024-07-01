@@ -39,11 +39,9 @@ export default function Home() {
       <div className="justify-center items-center">
 
       <section className="flex flex-col items-center text-center">
-        <Link className="font-bold text-2xl" href="/quiniela">
+        <Link className="font-bold text-2xl" href="/cuartos">
         <Button>
         Registrate y participa en la Quiniela
-
-
         </Button>
 
         

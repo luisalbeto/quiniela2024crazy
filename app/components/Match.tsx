@@ -9,8 +9,8 @@ export interface MatchProps{
 }
 const Match :FC<MatchProps>= ({ match }) => {
   return (
-    <div className="match-container bg-gray-100 shadow-md p-4 flex flex-col items-center gap-4" key={match.id}>
-      <div className="match-info flex flex-row justify-between">
+    <div className="bg-gray-100 shadow-md p-4 flex flex-col items-center gap-4 rounded-sm" key={match.id}>
+      <div className="match-info flex flex-row justify-between pb-4 p-4">
         <div className="team-info flex items-center">
           <img src={match.flag1} alt={match.team1} className="team-flag w-10 h-10 rounded-full mr-4" />
           <span className="team-name text-gray-800 font-bold">{match.team1}</span>
