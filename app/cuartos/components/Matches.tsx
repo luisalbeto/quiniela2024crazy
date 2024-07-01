@@ -1,7 +1,7 @@
 'use client'
-import {useGetMatchesList} from "@/app/quiniela/hooks/useGetMatchesList";
-import {Loading} from "@/app/quiniela/components/Loading";
-import Match from "@/app/quiniela/components/Match";
+import {useGetMatchesList} from "@/app/groups/hooks/useGetMatchesList";
+import {Loading} from "@/app/cuartos/components/Loading";
+import Match from "@/app/cuartos/components/Match";
 
 export const Matches = ()=>{
     const {matches}= useGetMatchesList()
@@ -18,8 +18,8 @@ export const Matches = ()=>{
       <div className="container mx-auto px-4 py-16">
       {/* Hero Section with Title */}
       <section className="flex flex-col items-center text-center">
-        <h1 className="text-6xl font-bold text-gray-900">Resultados</h1>
-        <p className="mt-4 text-2xl text-gray-800">Fase de Grupos</p>
+        <h1 className="text-6xl font-bold text-gray-900">Fase Final</h1>
+        <p className="mt-4 text-2xl text-gray-800">Llena los resultados y predice al Ganador de la Copa America</p>
   
 
       <div className="container mx-auto px-4">

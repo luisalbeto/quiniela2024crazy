@@ -15,10 +15,12 @@ export const Nav = () => {
             </div>
             <div className="flex flex-row gap-4 w-full justify-center">
 
-					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/auth-server-action">Inicia Sesion</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/auth-server-action">Login</Link>
 					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/">Home</Link>
-					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/quiniela">Quiniela</Link>
+					<Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/groups">Fase de Grupos</Link>
+          <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/cuartos">Fase Final</Link>
           <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/ranking">Ranking</Link>
+
 
             </div>
           </div>
