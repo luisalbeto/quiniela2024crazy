@@ -49,11 +49,11 @@ export default function Home() {
       </section>
       <section className="mt-8">
         <h2 className="text-4xl font-semibold text-gray-900">Reglamento de la Quiniela</h2>
-        <p className="mt-4 text-2xl text-gray-800">
+        <div className="mt-4 text-2xl text-gray-800">
           <li>1-Predecir al Ganador de un Partido +10pts</li>
           <li>2-Predecir al el marcador exacto del Partido +5pts</li>
           <li>3-Predecir la diferencia de goles entre el equipo ganador y el perdedor +5pts</li>
-        </p>
+        </div>
        
       </section>
      

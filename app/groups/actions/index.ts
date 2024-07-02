@@ -1,14 +1,6 @@
 'use server'
 import createSupabaseServerClient from "@/lib/supabase/server";
 
-export async function createTodo(title: string) {}
-
-export async function readTodo() {}
-
-export async function deleteTodoById(id: string) {}
-
-export async function updateTodoById(id: string, completed: boolean) {}
-
 
 export const insertScores = async (values: any)=>{
     const supabase = await createSupabaseServerClient()

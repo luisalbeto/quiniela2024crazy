@@ -1,11 +1,9 @@
 'use client'
-import React, {FC, useMemo} from 'react';
+import React, {FC} from 'react';
 import {Match} from "@/app/types/contanst.type";
-import {ErrorMessage, Field, Form, Formik, useFormik} from "formik";
+import { Field, Form, Formik} from "formik";
 import * as Yup from 'yup'
-import createSupabaseServerClient from "@/lib/supabase/server";
-import {useInsertScore} from "@/app/hooks/useInsertScore";
-import {insertScores} from "@/app/groups/actions";
+
 
 
 export interface MatchProps{
@@ -56,30 +54,28 @@ const Match :FC<MatchProps>= ({ match }) => {
                   {
                       ({errors, touched})=>(
                           <Form>
-                              <div className={'flex flex-row'}>
-                                  <Field name={'score1'} />
-                                  {
-                                      errors.score1 && touched.score1 ? (<div>{errors.score1}</div>): null
-                                  }
+                            <div className="scoreboard flex flex-col justify-center items-center gap-4">
+                            <div className="scoreboard flex flex-row justify-center items-center gap-4">
 
-                              </div>
-                              <div>
-                                 <Field name={'score2'}/>
-                                  {
-                                      errors.score2 && touched.score2 ? (<div>{errors.score2}</div>): null
-                                  }
-                              </div>
-                              <div>
-                                  <button type={'submit'}>enviar</button>
-                              </div>
+                            <div className="team-score bg-green-500 text-black py-2 rounded-lg font-bold text-xl">
+                                <Field name="score1" className="w-1/3" />
+                                {errors.score1 && touched.score1 ? (<div className="error-message text-red-500 text-xs">{errors.score1}</div>) : null}
+                            </div>
+                            <div className="vs text-gray-800 font-bold text-2xl">VS</div>
+                            <div className="team-score bg-sky-500 text-black py-2 rounded-lg font-bold text-xl">
+                                <Field name="score2"  className="w-1/3"/>
+                                {errors.score2 && touched.score2 ? (<div className="error-message text-red-500 text-xs">{errors.score2}</div>) : null}
+                            </div>
+                            </div>
+                            <div className="submit-button flex-col">
+                                <button type="submit" className="bg-blue-500 text-purple px-4 py-2 rounded-lg font-bold">Enviar</button>
+                            </div>
+                            </div>
                           </Form>
                       )
                   }
 
               </Formik>
-
-
-
           </div>}
 
         </div>
