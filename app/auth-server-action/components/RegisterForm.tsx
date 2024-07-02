@@ -56,7 +56,7 @@ export default function RegisterForm() {
 
 		toast({
 			variant: "destructive",
-			title: "You submitted the following values:",
+			title: "Aviso:",
 			description: (
 				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 					<code className="text-white">
@@ -67,7 +67,7 @@ export default function RegisterForm() {
 		});
 		}else{
 			toast({
-				title: "You submitted the following values:",
+				title: "Aviso:",
 				description: (
 					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 						<code className="text-white">

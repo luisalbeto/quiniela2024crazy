@@ -1,7 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
-
 
 export default function Home() {
   return (
@@ -38,15 +34,7 @@ export default function Home() {
       </section>
       <div className="justify-center items-center">
 
-      <section className="flex flex-col items-center text-center">
-        <Link className="font-bold text-2xl" href="/cuartos">
-        <Button>
-        Registrate y participa en la Quiniela
-        </Button>
-
-        
-        </Link>
-      </section>
+     
       <section className="mt-8">
         <h2 className="text-4xl font-semibold text-gray-900">Reglamento de la Quiniela</h2>
         <div className="mt-4 text-2xl text-gray-800">

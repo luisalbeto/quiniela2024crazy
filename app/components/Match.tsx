@@ -19,6 +19,10 @@ const PreditionsSchema= Yup.object().shape({
 
 })
 const Match :FC<MatchProps>= ({ match }) => {
+  const handleClick = () => {
+    alert('Guardado exitosamente');
+  };
+
 
   return (
     <div className="bg-gray-100 shadow-md p-4 flex flex-col items-center gap-4 rounded-sm" key={match.id}>
@@ -53,25 +57,30 @@ const Match :FC<MatchProps>= ({ match }) => {
               >
                   {
                       ({errors, touched})=>(
-                          <Form>
-                            <div className="scoreboard flex flex-col justify-center items-center gap-4">
-                            <div className="scoreboard flex flex-row justify-center items-center gap-4">
-
-                            <div className="team-score bg-green-500 text-black py-2 rounded-lg font-bold text-xl">
-                                <Field name="score1" className="w-1/3" />
-                                {errors.score1 && touched.score1 ? (<div className="error-message text-red-500 text-xs">{errors.score1}</div>) : null}
-                            </div>
-                            <div className="vs text-gray-800 font-bold text-2xl">VS</div>
-                            <div className="team-score bg-sky-500 text-black py-2 rounded-lg font-bold text-xl">
-                                <Field name="score2"  className="w-1/3"/>
-                                {errors.score2 && touched.score2 ? (<div className="error-message text-red-500 text-xs">{errors.score2}</div>) : null}
-                            </div>
-                            </div>
-                            <div className="submit-button flex-col">
-                                <button type="submit" className="bg-blue-500 text-purple px-4 py-2 rounded-lg font-bold">Enviar</button>
-                            </div>
-                            </div>
-                          </Form>
+                        <Form>
+  <div className="scoreboard flex flex-col justify-center items-center gap-4">
+    <div className="flex justify-center items-center gap-4">
+      <div className="team-score bg-green-500 text-black py-2 rounded-lg font-bold text-xl flex flex-col items-center border-lg">
+        <Field name="score1" className="w-1/3 text-center" />
+        {errors.score1 && touched.score1 ? (
+          <div className="error-message text-red-500 text-xs mt-1">{errors.score1}</div>
+        ) : null}
+      </div>
+      <div className="vs text-gray-800 font-bold text-2xl flex items-center">VS</div>
+      <div className="team-score bg-sky-500 text-black py-2 rounded-lg font-bold text-xl flex flex-col items-center">
+        <Field name="score2" className="w-1/3 text-center" />
+        {errors.score2 && touched.score2 ? (
+          <div className="error-message text-red-500 text-xs mt-1">{errors.score2}</div>
+        ) : null}
+      </div>
+    </div>
+  </div>
+  <div className="submit-button flex justify-center items-center mt-4">
+    <button onClick={handleClick} type="submit" className="bg-blue-500 text-purple px-4 py-2 rounded-lg font-bold">
+      Enviar
+    </button>
+  </div>
+</Form>
                       )
                   }
 

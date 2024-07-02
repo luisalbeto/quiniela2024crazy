@@ -4,8 +4,11 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 
 export const insertScores = async (values: any)=>{
     const supabase = await createSupabaseServerClient()
+    const user = await supabase.auth.getUser()
+
+       
     const {data} = await supabase.from('scores').insert({
-        userid:null,
+        userid:user.data.user?.id,
         localteam: values.home,
         localScore: values.score1,
         awayteam: values.away,
