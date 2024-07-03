@@ -76,7 +76,7 @@ const Match :FC<MatchProps>= ({ match }) => {
     </div>
   </div>
   <div className="submit-button flex justify-center items-center mt-4">
-    <button onClick={handleClick} type="submit" className="bg-blue-500 text-purple px-4 py-2 rounded-lg font-bold">
+    <button onClick={handleClick} type="submit" className="bg-blue-500 text-purple hover:text-turquesa transition-colors px-4 py-2 rounded-lg font-bold">
       Enviar
     </button>
   </div>

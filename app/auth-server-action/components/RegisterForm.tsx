@@ -17,8 +17,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { signUpWithEmailAndPassword } from "../actions";
 import { useTransition } from "react";
+import { useFetch } from "../../hooks/useFetch";
 
 const FormSchema = z
 	.object({
@@ -34,6 +34,7 @@ const FormSchema = z
 		message: "Password did not match",
 		path: ["confirm"],
 	});
+	
 export default function RegisterForm() {
 	const [isPending, startTransition] = useTransition()
 
@@ -45,42 +46,38 @@ export default function RegisterForm() {
 			confirm: "",
 		},
 	});
-
+	const [response, setResponse] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
  function onSubmit(data: z.infer<typeof FormSchema>) {
 
-		startTransition(async() => {
-			const result = await signUpWithEmailAndPassword(data)
-			const { error } = JSON.parse(result)
+		const { response, loading, error } = useFetch({method:'POST', endpoint:'api/users/register', data);
+		console.log(response);
 
 		if(error?.message){
-
-		toast({
-			variant: "destructive",
-			title: "Aviso:",
-			description: (
-				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-					<code className="text-white">
-						{error.message}
-					</code>
-				</pre>
-			),
-		});
-		}else{
+			toast({
+				variant: "destructive",
+				title: "Aviso:",
+				description: (
+					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+						<code className="text-white">
+							{error.message}
+						</code>
+					</pre>
+				),
+			});
+		} else {
 			toast({
 				title: "Aviso:",
 				description: (
 					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 						<code className="text-white">
-							Registro Exitoso
+							Registro Exitoso Ahora Inicia Sesion
 						</code>
 					</pre>
 				),
 			});
 		}
-
-		})
-
-		
 	}
 
 	return (
