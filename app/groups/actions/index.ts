@@ -1,12 +1,8 @@
 'use server'
-import createSupabaseServerClient from "@/lib/supabase/server";
-
 
 export const insertScores = async (values: any)=>{
-    const supabase = await createSupabaseServerClient()
     const user = await supabase.auth.getUser()
 
-       
     const {data} = await supabase.from('scores').insert({
         userid:user.data.user?.id,
         localteam: values.home,
@@ -14,7 +10,6 @@ export const insertScores = async (values: any)=>{
         awayteam: values.away,
         awayScore: values.score2
     })
-
 }
 export const selectScores = async ()=>{
     const supabase = await createSupabaseServerClient()

@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useTransition } from "react";
+import { useTransition, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 const FormSchema = z
@@ -46,12 +46,12 @@ export default function RegisterForm() {
 			confirm: "",
 		},
 	});
-	const [response, setResponse] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const { error, loading, response, handleSubmit} = useFetch();
+
+
  function onSubmit(data: z.infer<typeof FormSchema>) {
 
-		const { response, loading, error } = useFetch({method:'POST', endpoint:'api/users/register', data);
+		handleSubmit({ method:'POST', endpoint:'api/users/register', body: data })
 		console.log(response);
 
 		if(error?.message){

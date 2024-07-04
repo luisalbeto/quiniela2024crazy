@@ -1,23 +1,25 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { config } from '../constants';
 
-export const useFetch = ({method, endpoint, body}) => {
+export const useFetch = () => {
+  const [response, setResponse] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
-  const hostname = process.env.API_HOSTNAME;
-  const port = process.env.API_PORT;
-  const url = `http://${hostname}:${port}/${endpoint}`;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
+
+  const handleSubmit = useCallback(async ({method, endpoint, body})=>{
+    const url = `http://${config.hostname}:${config.port}/${endpoint}`;
+    setLoading(true);
       try {
         const response = await fetch(url, {
           method,
           headers: {
             'Content-Type': 'application/json',
           },
-          body: method !== 'GET' ? JSON.stringify(body) : null,
+          body: method !== 'GET'  ? JSON.stringify(body) : null,
         });
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -29,10 +31,14 @@ export const useFetch = ({method, endpoint, body}) => {
       } finally {
         setLoading(false);
       }
-    };
+  },[])
 
-    fetchData();
-  }, [url, method, body]);
+  
+  return {
+    handleSubmit,
+    error,
+    loading,
+    response
+  }
 
-  return { response, loading, error };
 };

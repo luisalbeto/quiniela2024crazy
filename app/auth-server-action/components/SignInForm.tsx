@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { signInWithEmailAndPassword } from "../actions";
 import { useTransition } from "react";
+import { useFetch } from "../../hooks/useFetch";
 
 const FormSchema = z.object({
 	email: z.string().email(),
@@ -28,7 +28,7 @@ const FormSchema = z.object({
 export default function SignInForm() {
 
 	const [isPending, startTransition] = useTransition()
-
+	const { error, loading, response, handleSubmit } = useFetch();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -39,40 +39,9 @@ export default function SignInForm() {
 	});
 
 	function onSubmit(data: z.infer<typeof FormSchema>) {
-
-	startTransition(async () => {
-		const result = await signInWithEmailAndPassword(data)
-	const { error } = JSON.parse(result)
-
-	if(error?.message){
-
-		toast({
-			variant: "destructive",
-			title: "Aviso:",
-			description: (
-				<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-					<code className="text-white">
-						{error.message}
-					</code>
-				</pre>
-			),
-		});
-		}else{
-			toast({
-				title: "Aviso:",
-				description: (
-					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-						<code className="text-white">
-							Login exitoso
-						</code>
-					</pre>
-				),
-			});
-		}
-
-	})
-	
-	
+		console.log(data)
+		handleSubmit({ method:'POST', endpoint:'api/users/login', body: data })
+		console.log(response)
 	}
 
 	return (
