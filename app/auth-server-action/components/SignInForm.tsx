@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { setCookie } from 'cookies-next';
 
 import {
 	Form,
@@ -28,7 +29,7 @@ const FormSchema = z.object({
 export default function SignInForm() {
 
 	const [isPending, startTransition] = useTransition()
-	const { error, loading, response, handleSubmit } = useFetch();
+	const { error, loading, response, handleSubmit }:{response:{token:string}} = useFetch();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -42,6 +43,7 @@ export default function SignInForm() {
 		console.log(data)
 		handleSubmit({ method:'POST', endpoint:'api/users/login', body: data })
 		console.log(response)
+		setCookie('token',response?.token ?? '')
 	}
 
 	return (
