@@ -1,6 +1,8 @@
 
 import { redirect } from "next/navigation";
 import {Matches} from "@/app/components/Matches";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 
 export default async function Page() {
@@ -11,6 +13,7 @@ export default async function Page() {
 	if(!data.session){
 		return redirect('/auth-server-action')
 	}*/
+ 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-blue overflow-hidden">
         <section className="flex flex-col items-center text-center">

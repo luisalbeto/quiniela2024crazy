@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { setCookie } from 'cookies-next';
+import { setCookie,getCookie } from 'cookies-next';
 
 import {
 	Form,
@@ -16,8 +16,9 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useTransition } from "react";
+import { useCallback, useTransition } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
 	email: z.string().email(),
@@ -27,9 +28,10 @@ const FormSchema = z.object({
 });
 
 export default function SignInForm() {
+	const router = useRouter()
 
 	const [isPending, startTransition] = useTransition()
-	const { error, loading, response, handleSubmit }:{response:{token:string}} = useFetch();
+	const { error, loading, response, handleSubmit } = useFetch();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -38,13 +40,24 @@ export default function SignInForm() {
 			password: "",
 		},
 	});
-
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	const onSubmit = useCallback(async (data: z.infer<typeof FormSchema>)=>{
 		console.log(data)
-		handleSubmit({ method:'POST', endpoint:'api/users/login', body: data })
-		console.log(response)
-		setCookie('token',response?.token ?? '')
-	}
+		const res= await handleSubmit({ method:'POST', endpoint:'api/users/login', body: data })
+	
+	   if(res){
+
+			setCookie('token', res.token);
+			if(getCookie('token')){
+				router.push('/groups');
+
+			}
+	   }
+	},[
+		loading, handleSubmit,
+		setCookie,getCookie
+		
+	])
+
 
 	return (
 		<Form {...form}>

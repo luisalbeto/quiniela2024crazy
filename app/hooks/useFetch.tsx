@@ -4,13 +4,13 @@ import { useCallback, useEffect, useState } from 'react';
 import { config } from '../constants';
 
 export const useFetch = () => {
-  const [response, setResponse] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+  const [response, setResponse] = useState<any>(null);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<any>(null);
 
 
 
-  const handleSubmit = useCallback(async ({method, endpoint, body})=>{
+  const handleSubmit = useCallback(async ({method, endpoint, body}:{method:string,endpoint:string, body:any})=>{
     const url = `http://${config.hostname}:${config.port}/${endpoint}`;
     setLoading(true);
       try {
@@ -26,6 +26,7 @@ export const useFetch = () => {
         }
         const result = await response.json();
         setResponse(result);
+        return result
       } catch (error) {
         setError(error);
       } finally {
