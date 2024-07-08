@@ -20,6 +20,7 @@
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "cookies-next": "^4.2.1",
     "formik": "^2.4.6",
     "next": "14.0.1",
     "raw-body": "^2.5.2",

@@ -13,7 +13,6 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useCallback, useTransition } from "react";
@@ -48,7 +47,7 @@ export default function SignInForm() {
 
 			setCookie('token', res.token);
 			if(getCookie('token')){
-				router.push('/groups');
+				router.push('/');
 
 			}
 	   }

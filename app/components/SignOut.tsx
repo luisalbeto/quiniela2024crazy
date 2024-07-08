@@ -8,9 +8,6 @@ export default function SignOut() {
   const Logout = async () => {
     'use server'
 
-    //const supabase = await createSupabaseServerClient()
-
-   // await supabase.auth.signOut()
    setCookie('token',null)
     redirect('/auth-server-action')
   }

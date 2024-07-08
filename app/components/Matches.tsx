@@ -1,8 +1,8 @@
 'use client'
 import {useGetMatchesList} from "@/app/hooks/useGetMatchesList";
 import {Loading} from "@/app/components/Loading";
-import Match from "@/app/components/Match";
 import {FC, useMemo} from "react";
+import Game from "@/app/components/Match";
 
 
 export interface MatchesProps{
@@ -22,7 +22,7 @@ export const Matches:FC<MatchesProps> = ({matchDay})=>{
       <div className="container mx-auto px-4 py-16">
       <div className="container mx-auto px-4">
                 {data.map((match,index) => (
-                    <Match
+                    <Game
                         key={index}
                         match={match}
                     />))}

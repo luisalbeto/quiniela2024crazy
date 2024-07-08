@@ -1,7 +1,8 @@
+import SignOut from "./components/SignOut";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-blue overflow-hidden">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-white overflow-hidden">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
       <div className="container mx-auto px-4 py-16">
       {/* Hero Section with Title */}
@@ -42,6 +43,10 @@ export default function Home() {
           <li>2-Predecir al el marcador exacto del Partido +5pts</li>
           <li>3-Predecir la diferencia de goles entre el equipo ganador y el perdedor +5pts</li>
         </div>
+        <div className="flex flex-col items-center text-center">
+        <SignOut/>
+        </div>
+
        
       </section>
      

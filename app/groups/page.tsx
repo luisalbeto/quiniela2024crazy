@@ -1,21 +1,12 @@
-
-import { redirect } from "next/navigation";
+'use client'
 import {Matches} from "@/app/components/Matches";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 
 export default async function Page() {
 
-
-	/*const {data} = await readUserSession()
-
-	if(!data.session){
-		return redirect('/auth-server-action')
-	}*/
  
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-blue overflow-hidden">
+        <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-white overflow-hidden">
         <section className="flex flex-col items-center text-center">
             {/* Hero Section with Title */}
         <h1 className="text-6xl font-bold text-gray-900 ">Fase Final</h1>
@@ -32,7 +23,5 @@ export default async function Page() {
         </main>
 
     )
-
-
 
 }

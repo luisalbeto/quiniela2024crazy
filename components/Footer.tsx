@@ -4,7 +4,7 @@ export const Footer = () => {
       <div className="fixed bottom-0 w-full px-4 bg-transparent">
         <div className="flex items-center md:max-w-screen-2xl mx-auto w-full justify-center
           ">
-            <p className="flex items-center justify-center text-xs text-white">
+            <p className="flex items-center justify-center text-xs text-black">
             &copy; 2024 Crazy Imagine Sotfware Feat Luis Ramirez. All rights reserved.
           </p>
             
