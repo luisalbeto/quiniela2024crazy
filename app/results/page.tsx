@@ -4,11 +4,6 @@ import { MatchesResult } from "../components/MatchesResult";
 export default async function Page() {
 
 
-	/*const {data} = await readUserSession()
-
-	if(!data.session){
-		return redirect('/auth-server-action')
-	}*/
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-b from-sky to-white overflow-hidden">
         <section className="flex flex-col items-center text-center">
