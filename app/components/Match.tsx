@@ -4,6 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { Match } from '@/app/types/contanst.type';
 import { useFetch } from '../hooks/useFetch';
+import { getCookie } from 'cookies-next';
 
 
 const PreditionsSchema = Yup.object().shape({
@@ -18,26 +19,29 @@ interface GameProps {
 }
 
 const Game: React.FC<GameProps> = ({ match }) => {
+  const { handleSubmit } = useFetch();
+
   // Función para manejar el envío del formulario
   const onSubmit = async (data: Yup.InferType<typeof PreditionsSchema>, actions: any) => {
-  const { handleSubmit } = useFetch();
+
+    const payload = { localteam: data.home, awayteam: data.away, scoreLocalteam: data.score1, scoreAwayteam: data.score2  }
 
   try {
     const response = await handleSubmit({
       method: 'POST',
-      endpoint: 'api/scores/save',
-      body: data
+      endpoint: 'api/scores',
+      body: payload,
+      token: getCookie('token')
     });
 
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log(responseData);
+    if (response) {
+      console.log(response.message)
       alert('Marcadores guardados exitosamente');
     } else {
       throw new Error('Error al guardar los marcadores');
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.log('Error:', error);
     alert('Hubo un error al intentar guardar los marcadores');
   } finally {
     actions.setSubmitting(false); // Marcar el formulario como no enviando, independientemente del resultado

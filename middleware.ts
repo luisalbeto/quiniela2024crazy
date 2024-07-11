@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server'
 import { NextRequest } from 'next/server'
  import { getCookie, getCookies } from 'cookies-next'
-export function middleware(request: NextRequest) {
+
+
+ export function middleware(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const skipMiddleware = searchParams.get('skipMiddleware');
    console.log(request.url)

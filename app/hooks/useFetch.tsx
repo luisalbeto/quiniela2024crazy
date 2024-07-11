@@ -10,7 +10,7 @@ export const useFetch = () => {
 
 
 
-  const handleSubmit = useCallback(async ({method, endpoint, body}:{method:string,endpoint:string, body:any})=>{
+  const handleSubmit = useCallback(async ({method, endpoint, body,token=''}:{method:string,endpoint:string, body:any,token?:string})=>{
     const url = `http://${config.hostname}:${config.port}/${endpoint}`;
     setLoading(true);
       try {
@@ -18,12 +18,11 @@ export const useFetch = () => {
           method,
           headers: {
             'Content-Type': 'application/json',
+            'authorization':token
           },
           body: method !== 'GET'  ? JSON.stringify(body) : null,
         });
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
+       
         const result = await response.json();
         setResponse(result);
         return result
