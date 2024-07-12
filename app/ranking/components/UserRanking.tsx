@@ -1,30 +1,33 @@
 "use client"
+
 import { useFetch } from '@/app/hooks/useFetch';
+import { getCookie } from 'cookies-next';
 import React, { useEffect, useState } from 'react';
 
 const UsersList: React.FC = () => {
-  const { handleSubmit, loading, error, response } = useFetch();
-  const [users, setUsers] = useState<any[]>([]); // Ajusta según la estructura de tus usuarios
+  const { handleSubmit, loading, error } = useFetch();
+  const [users, setUsers] = useState<any[]>([]); 
 
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const token = ''; // Puedes obtener el token como lo haces en otros componentes
         const usersResponse = await handleSubmit({
           method: 'GET',
-          endpoint: 'api/users', // Endpoint de tu backend para obtener usuarios
+          endpoint: 'api/users', 
           body: null,
-          token,
+          token: getCookie('token'),
         });
 
-        if (usersResponse) {
-          setUsers(usersResponse.users); // Asumiendo que tu backend devuelve un objeto con una propiedad 'users'
+        console.log('usersResponse:', usersResponse); // Verifica qué devuelve handleSubmit
+
+        if (usersResponse && usersResponse.users) {
+          setUsers(usersResponse.users);
         } else {
-          throw new Error('Error al obtener usuarios');
+          throw new Error('El servidor no devolvió una lista de usuarios válida');
         }
       } catch (error) {
-        console.error('Error:', error);
-        // Manejo de errores como prefieras
+        console.error('Error al obtener usuarios:', error);
+        throw new Error('Error: Error al obtener usuarios'); // Aquí podrías lanzar el error nuevamente
       }
     };
 
@@ -40,7 +43,7 @@ const UsersList: React.FC = () => {
       {users.length > 0 ? (
         <ul>
           {users.map((user) => (
-            <li key={user.id}>{user.name}</li> // Ajusta según la estructura de tu objeto de usuario
+            <li key={user.id}>{user.name}</li>
           ))}
         </ul>
       ) : (
