@@ -5,8 +5,10 @@ import { NextRequest } from 'next/server'
 
  export function middleware(request: NextRequest) {
   const { searchParams } = new URL(request.url);
+
   const skipMiddleware = searchParams.get('skipMiddleware');
    console.log(request.url)
+   
   if (skipMiddleware === 'true') {
       return NextResponse.next();
   }
@@ -24,7 +26,7 @@ import { NextRequest } from 'next/server'
  
 export const config = {
 
-  matcher: [        '/((?!api|_next/static|_next/image|favicon.ico|auth-server-action).*)',
+  matcher: [  '/((?!api|_next/static|copalogo.svg|favicon.ico|auth-server-action).*)',
   
   ],
 }

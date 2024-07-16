@@ -12,7 +12,7 @@ const MatchResult :FC<MatchResultProps>= ({ match }) => {
   
 
   return (
-<div className="bg-gray-500 shadow-md p-4 flex flex-col items-center gap-4 rounded-sm mt-4 md:flex-row md:justify-between md:items-center md:gap-8 lg:w-3/4 xl:w-2/3 mx-auto">
+<div className="bg-blue/80 shadow-md p-4 flex flex-col items-center gap-4 rounded-sm mt-4 md:flex-row md:justify-between md:items-center md:gap-8 lg:w-3/4 xl:w-2/3 mx-auto">
   <div className="match-info flex flex-col md:flex-row md:items-center md:justify-between py-4 px-4 w-full">
     <div className="team-info flex items-center mb-4 md:mb-0">
       <img src={match.flag1} alt={match.team1} className="team-flag w-10 h-10 rounded-full mr-4" />
