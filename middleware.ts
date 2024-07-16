@@ -26,7 +26,7 @@ import { NextRequest } from 'next/server'
  
 export const config = {
 
-  matcher: [  '/((?!api|_next/static|copalogo.svg|favicon.ico|auth-server-action).*)',
+  matcher: [  '/((?!api|_next/static|copalogo.svg|favicon.svg|auth-server-action).*)',
   
   ],
 }
