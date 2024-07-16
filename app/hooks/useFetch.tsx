@@ -11,7 +11,7 @@ export const useFetch = () => {
 
 
   const handleSubmit = useCallback(async ({method, endpoint, body,token=''}:{method:string,endpoint:string, body:any,token?:string})=>{
-    const url = `https://${config.hostname}:${config.port}/${endpoint}`;
+    const url = `http://${config.hostname}:${config.port}/${endpoint}`;
     setLoading(true);
       try {
         const response = await fetch(url, {
