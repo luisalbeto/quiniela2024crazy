@@ -2,6 +2,14 @@ import { Logo } from "./Logo";
 import Link from "next/link";
 
 
+const navItems = [
+  {path: '/', text: 'Home'},
+  {path: '/groups', text: 'Fase Final'},
+  {path: '/results', text: 'Resultados'},
+  {path: '/ranking', text: 'Ranking'},
+]
+
+
 export const Nav = () => {
   return (
 <div className="w-full bg-gradient-to-b from-blue/90 to-sky">
@@ -14,11 +22,9 @@ export const Nav = () => {
         Quiniela Copa America 2024 Crazy Imagine
       </div>
       <div className="hidden md:flex flex-row gap-4 w-full justify-center">
-        <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/auth-server-action">Login</Link>
-        <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/">Home</Link>
-        <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/groups">Fase Final</Link>
-        <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/results">Resultados</Link>
-        <Link className="font-bold text-xl text-purple hover:text-turquesa transition-colors" href="/ranking">Ranking</Link>
+        { navItems.map( navItem => (
+          <Link key={navItem.path} className="mr-2 font-bold text-xl text-purple hover:text-turquesa transition-colors" href={navItem.path}>{navItem.text}</Link>
+        ))}
       </div>
     </div>
   </div>
